@@ -1,33 +1,41 @@
 {
 	"info": {
-		"_postman_id": "88da0255-98c3-4853-97d9-87b44c322661",
-		"name": "常见方法",
+		"_postman_id": "5e25519f-8b5c-4302-bc9e-4f051381abdf",
+		"name": "APItest",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "get请求",
+			"name": "001",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://postman-echo.com/get?fool=bar1&foo2=bar2",
-					"protocol": "https",
+					"raw": "http://{{domain}}/getuser?userid=1",
+					"protocol": "http",
 					"host": [
-						"postman-echo",
-						"com"
+						"{{domain}}"
 					],
 					"path": [
-						"get"
+						"getuser"
 					],
 					"query": [
 						{
-							"key": "fool",
-							"value": "bar1"
-						},
-						{
-							"key": "foo2",
-							"value": "bar2"
+							"key": "userid",
+							"value": "1"
 						}
 					]
 				}
@@ -35,181 +43,39 @@
 			"response": []
 		},
 		{
-			"name": "post请求",
+			"name": "002",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Your test name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.msg).to.eql(\"没有这个用户\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
-				"method": "POST",
+				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://postman-echo.com/post?data=hello postman",
-					"protocol": "https",
+					"raw": "http://{{domain}}/getuser?userid=2",
+					"protocol": "http",
 					"host": [
-						"postman-echo",
-						"com"
+						"{{domain}}"
 					],
 					"path": [
-						"post"
+						"getuser"
 					],
 					"query": [
 						{
-							"key": "data",
-							"value": "hello postman"
+							"key": "userid",
+							"value": "2"
 						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "post请求",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": []
-				},
-				"url": {
-					"raw": "https://postman-echo.com/post",
-					"protocol": "https",
-					"host": [
-						"postman-echo",
-						"com"
-					],
-					"path": [
-						"post"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "post请求",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "data",
-							"value": "helloone",
-							"type": "default"
-						}
-					]
-				},
-				"url": {
-					"raw": "https://postman-echo.com/post",
-					"protocol": "https",
-					"host": [
-						"postman-echo",
-						"com"
-					],
-					"path": [
-						"post"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "post请求",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"data\":\"hello\"\r\n}"
-				},
-				"url": {
-					"raw": "https://postman-echo.com/post",
-					"protocol": "https",
-					"host": [
-						"postman-echo",
-						"com"
-					],
-					"path": [
-						"post"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "post",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "file",
-					"file": {}
-				},
-				"url": {
-					"raw": "https://postman-echo.com/post",
-					"protocol": "https",
-					"host": [
-						"postman-echo",
-						"com"
-					],
-					"path": [
-						"post"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "put请求",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "data",
-							"value": "put text",
-							"type": "default"
-						}
-					]
-				},
-				"url": {
-					"raw": "https://postman-echo.com/put",
-					"protocol": "https",
-					"host": [
-						"postman-echo",
-						"com"
-					],
-					"path": [
-						"put"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "patch请求",
-			"request": {
-				"method": "PATCH",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "data",
-							"value": "abcd",
-							"type": "default"
-						}
-					]
-				},
-				"url": {
-					"raw": "https://postman-echo.com/patch",
-					"protocol": "https",
-					"host": [
-						"postman-echo",
-						"com"
-					],
-					"path": [
-						"patch"
 					]
 				}
 			},
